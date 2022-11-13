@@ -1,0 +1,25 @@
+import sys
+import fileinput
+
+with open('fra.txt', encoding="utf8") as f:
+    lines = f.readlines()
+    d={}
+    for line in lines:
+        line=line.replace("!","")
+        line=line.replace("?","")
+        line=line.replace(".","")
+        l=line.split()
+        for word in l:
+            if word in d:
+                d[word]+=1
+            else:
+                d[word]=1
+    Keymax = max(zip(d.values(), d.keys()))[1]
+    print(Keymax)
+
+with open('fra.txt', encoding="utf8") as file:
+    data = file.read()
+    data = data.replace(Keymax, "loopr")
+  
+with open('fra1.txt', 'w', encoding="utf8") as file:
+    file.write(data)
